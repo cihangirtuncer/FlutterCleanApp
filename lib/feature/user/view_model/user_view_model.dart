@@ -9,9 +9,10 @@ import '../model/user_model.dart';
 class UserViewModel extends ChangeNotifier {
   List<User> userViewModelList = [];
   User? user;
+  final userPath = '/users';
 
   Future<void> fetchItem() async {
-    final response = await NetworkManager.instance.manager.get('/users');
+    final response = await NetworkManager.instance.manager.get(userPath);
     if (response.statusCode == HttpStatus.ok) {
       controlResponse(response);
       notifyListeners();
