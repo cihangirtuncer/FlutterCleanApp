@@ -1,3 +1,10 @@
+
+
+
+import 'package:json_annotation/json_annotation.dart';
+part 'user_model.g.dart';
+
+@JsonSerializable()
 class User {
   int? id;
   String? name;
@@ -6,19 +13,11 @@ class User {
 
   User({this.id, this.name, this.username, this.email});
 
-  User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    username = json['username'];
-    email = json['email'];
+ factory User.fromJson(Map<String, dynamic> json) {
+  return _$UserFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['username'] = this.username;
-    data['email'] = this.email;
-    return data;
+    return _$UserToJson(this);
   }
 }
