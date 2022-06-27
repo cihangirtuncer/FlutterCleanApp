@@ -9,8 +9,7 @@ void main() {
     inetworkmanager = NetworkManager.instance..init('https://jsonplaceholder.typicode.com', {});
   });
   test("Network testing", () async {
-    final response = await inetworkmanager.manager.get('/todos/1'); 
-    print(response);
+    final response = await inetworkmanager.manager.get('/users'); 
     expect(response, isNotNull);
   });
   tearDown((){});

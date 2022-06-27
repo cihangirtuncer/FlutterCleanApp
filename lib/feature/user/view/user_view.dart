@@ -3,7 +3,7 @@ import 'package:flutter_clean_app_examples/feature/user/view_model/user_view_mod
 import 'package:provider/provider.dart';
 
 class UserViewWidget extends StatefulWidget {
-  UserViewWidget({Key? key}) : super(key: key);
+  const UserViewWidget({Key? key}) : super(key: key);
 
   @override
   State<UserViewWidget> createState() => _UserViewWidgetState();
@@ -31,16 +31,14 @@ class _UserViewWidgetState extends State<UserViewWidget> {
     return Scaffold(
       body: 
           ListView.builder(
-            itemCount: userViewModel.userModel.length,
+            itemCount: userViewModel.userViewModelList.length,
           itemBuilder: ((context, index) {
             return Card(
                 child: ListTile(
                   leading: Container(
                     width: 10,
                   ),
-                  // leading: Container(
-                  // color: Color(int.parse('FF${resourceModel!.data![index].color!.replaceAll('#', '')}', radix: 16))),
-                  title: Text(userViewModel.userModel[index].name.toString()),
+                    title: Text(userViewModel.userViewModelList[index].name.toString()),
                 ),
               );
           }),
