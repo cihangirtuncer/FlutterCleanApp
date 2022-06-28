@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_app_examples/core/constants/api_constatns.dart';
+import 'package:flutter_clean_app_examples/core/constants/api_constants.dart';
 import 'package:flutter_clean_app_examples/core/manager/network/network_manager.dart';
 import 'package:flutter_clean_app_examples/core/provider/user_provider.dart';
 import 'package:hive/hive.dart';

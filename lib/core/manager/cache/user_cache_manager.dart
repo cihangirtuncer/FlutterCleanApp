@@ -1,3 +1,4 @@
+import 'package:flutter_clean_app_examples/core/constants/api_constants.dart';
 import 'package:flutter_clean_app_examples/feature/user/model/user_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -31,7 +32,7 @@ abstract class ICacheManager<T> {
 }
 
 class UserCacheManager extends ICacheManager<User> {
-  UserCacheManager() : super('userCache2');
+  UserCacheManager() : super(ApiConstants.cachePathName );
 
   @override
   Future<void> addItems(List<User>? items) async {
