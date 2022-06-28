@@ -6,6 +6,7 @@ abstract class ICacheManager<T> {
   Box<User>? _box;
 
   ICacheManager(this.key);
+
   Future<void> init() async {
     registerAdapters();
     if (!(_box?.isOpen ?? false)) {
@@ -30,7 +31,7 @@ abstract class ICacheManager<T> {
 }
 
 class UserCacheManager extends ICacheManager<User> {
-  UserCacheManager(String key) : super(key);
+  UserCacheManager() : super('userCache2');
 
   @override
   Future<void> addItems(List<User>? items) async {

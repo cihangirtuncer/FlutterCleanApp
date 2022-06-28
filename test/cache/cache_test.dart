@@ -10,7 +10,7 @@ void main() {
 
   setUp(() async {
     Hive.init('database');
-    userCacheManager = UserCacheManager("database");
+    userCacheManager = UserCacheManager();
     await userCacheManager.init();
   });
   group("UserCacheManager testing", () {
@@ -28,17 +28,13 @@ void main() {
       await userCacheManager.putItem("name2", User(name: "emirhan"));
       await userCacheManager.addItems(items);
       itemsAllValues = userCacheManager.getValues();
-    
+
       expect(itemsAllValues?.last.name, "emirhan");
     });
-      test("removeItem method successful", () async {
-      await userCacheManager.removeItem("name2"); 
-           itemsAllValues = userCacheManager.getValues();   
-              expect(itemsAllValues?.last.name, "cihangir");
-
+    test("removeItem method successful", () async {
+      await userCacheManager.removeItem("name2");
+      itemsAllValues = userCacheManager.getValues();
+      expect(itemsAllValues?.last.name, "cihangir");
     });
-
-  
   });
 }
-

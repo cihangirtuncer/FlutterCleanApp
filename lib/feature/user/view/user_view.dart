@@ -24,7 +24,7 @@ class _UserViewState extends State<UserView> {
   void initState() {
     super.initState();
     userViewModel = UserViewModel();
-    cacheManager = UserCacheManager('usersCacheFinaly4');
+    cacheManager = UserCacheManager();
     userViewModel.fetchItem();
     fetchDatasInit();
   }
@@ -41,7 +41,7 @@ class _UserViewState extends State<UserView> {
 
   @override
   Widget build(BuildContext context) {
-    return cacheManager.getValues()!.isNotEmpty 
+    return cacheManager.getValues() != null && cacheManager.getValues()!.isNotEmpty 
         ?   bodyView(context)
         : ChangeNotifierProvider.value(
             value: userViewModel,
@@ -121,7 +121,7 @@ class _UserViewState extends State<UserView> {
           }
         }),
         body: ListView.builder(
-          itemCount: _items!.length,
+          itemCount: _items?.length ?? 0,
           itemBuilder: ((context, index) {
             return Card(
               child: ListTile(
