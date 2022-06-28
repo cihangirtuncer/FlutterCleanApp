@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_app_examples/core/manager/cache/user_cache_manager.dart';
 import 'package:flutter_clean_app_examples/feature/user/view_model/user_view_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../search_view.dart';
 import '../model/user_model.dart';
 
 class UserViewWidget extends StatefulWidget {
@@ -22,7 +24,7 @@ class _UserViewWidgetState extends State<UserViewWidget> {
   void initState() {
     super.initState();
     userViewModel = UserViewModel();
-    cacheManager = UserCacheManager('usersCacheFinaly3');
+    cacheManager = UserCacheManager('usersCacheFinaly4');
     userViewModel.fetchItem();
     fetchDatasInit();
   }
@@ -55,6 +57,14 @@ class _UserViewWidgetState extends State<UserViewWidget> {
     print("sükür");
     return Scaffold(
         appBar: AppBar(
+          actions: [IconButton(onPressed: (){
+            Navigator.push<void>(
+    context,
+    MaterialPageRoute<void>(
+      builder: (BuildContext context) => SearchView(model: cacheManager,),
+    ),
+  );
+          }, icon: Icon(CupertinoIcons.search))],
           title: const Text("Users"),
           centerTitle: true,
         ),
@@ -88,6 +98,14 @@ class _UserViewWidgetState extends State<UserViewWidget> {
     print("üzdü");
     return Scaffold(
         appBar: AppBar(
+          actions: [IconButton(onPressed: (){
+            Navigator.push<void>(
+    context,
+    MaterialPageRoute<void>(
+      builder: (BuildContext context) => SearchView(model: cacheManager,),
+    ),
+  );
+          }, icon: Icon(CupertinoIcons.search))],
           title: const Text("Users"),
           centerTitle: true,
         ),
