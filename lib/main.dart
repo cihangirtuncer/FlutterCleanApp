@@ -13,6 +13,7 @@ void main() async {
   NetworkManager.instance.init('https://jsonplaceholder.typicode.com', {});
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  
   runApp(MyApp());
 }
 
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create:(context) => UserContext(), 
-      child: MaterialApp(
+      child:const MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Material App',
-        home: UserViewWidget()
+        home: UserView()
       ),
     );
   }

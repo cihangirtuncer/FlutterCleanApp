@@ -25,23 +25,28 @@ setState(() {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          autofocus: true,
+          style: const TextStyle(
+            color: Colors.white
+          ),
+          cursorColor: Colors.white,
           onChanged: (value){
             findAndSet(value);
           },
         ),
         leading: InkWell(
-          child: Icon(CupertinoIcons.back),
+          child: const Icon(CupertinoIcons.back),
           onTap: (){
             Navigator.pop(context);
           },
         ),
       ),
       body: ListView.builder(
-        itemCount:_items.length ,
+        itemCount:1,
         itemBuilder: (((context, index) {
         return Card(
           child: ListTile(
-            title: Text(_items.map((e) => '${e.name}').join('')),
+            title: Text(_items.map((e) => '${e.name}').join(",")),
           ),
         );
       }) ) ),

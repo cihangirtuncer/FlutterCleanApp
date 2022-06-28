@@ -19,7 +19,7 @@ abstract class ICacheManager<T> {
     await _box?.clear();
   }
 
-  Future<void> addItems(List<T> items);
+  Future<void> addItems(List<T>? items);
   Future<void> putItems(List<T> items);
 
   T? getItem(String key);
@@ -33,8 +33,8 @@ class UserCacheManager extends ICacheManager<User> {
   UserCacheManager(String key) : super(key);
 
   @override
-  Future<void> addItems(List<User> items) async {
-    await _box?.addAll(items);
+  Future<void> addItems(List<User>? items) async {
+    await _box?.addAll(items ?? []);
   }
 
   @override

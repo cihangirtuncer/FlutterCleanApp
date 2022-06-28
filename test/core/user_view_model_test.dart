@@ -16,7 +16,6 @@ void main() {
     final response = userViewModel.controlResponse(Response(
       data:userList,
       requestOptions: RequestOptions(path: "/hello")));
-      print(response?[0].name.toString());
       expect(response?[0].name, "cihangir");
 
   });

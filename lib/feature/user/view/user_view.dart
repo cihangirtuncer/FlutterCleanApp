@@ -8,14 +8,14 @@ import 'package:provider/provider.dart';
 import '../../search/search_view.dart';
 import '../model/user_model.dart';
 
-class UserViewWidget extends StatefulWidget {
-  const UserViewWidget({Key? key}) : super(key: key);
+class UserView extends StatefulWidget {
+  const UserView({Key? key}) : super(key: key);
 
   @override
-  State<UserViewWidget> createState() => _UserViewWidgetState();
+  State<UserView> createState() => _UserViewState();
 }
 
-class _UserViewWidgetState extends State<UserViewWidget> {
+class _UserViewState extends State<UserView> {
   late UserViewModel userViewModel;
   late final ICacheManager<User> cacheManager;
   List<User>? _items;
@@ -32,7 +32,7 @@ class _UserViewWidgetState extends State<UserViewWidget> {
   Future<void> fetchDatasInit() async {
     await cacheManager.init();
     if (cacheManager.getValues()?.isNotEmpty ?? false) {
-      _items = cacheManager.getValues();
+      _items =  cacheManager.getValues();
     } else {
       _items = userViewModel.userViewModelList;
     }
@@ -41,8 +41,8 @@ class _UserViewWidgetState extends State<UserViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return cacheManager.getValues()!.isNotEmpty
-        ? bodyView(context)
+    return cacheManager.getValues()!.isNotEmpty 
+        ?   bodyView(context)
         : ChangeNotifierProvider.value(
             value: userViewModel,
             child: Consumer<UserViewModel>(
@@ -52,6 +52,7 @@ class _UserViewWidgetState extends State<UserViewWidget> {
   }
 
   Scaffold bodyView(BuildContext context) {
+    
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -78,8 +79,9 @@ class _UserViewWidgetState extends State<UserViewWidget> {
           }
         }),
         body: ListView.builder(
-          itemCount: _items!.length,
+          itemCount: _items?.length,
           itemBuilder: ((context, index) {
+
             return Card(
               child: ListTile(
                 leading: const CircleAvatar(
